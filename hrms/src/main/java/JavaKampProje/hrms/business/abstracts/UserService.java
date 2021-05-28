@@ -1,5 +1,10 @@
 package JavaKampProje.hrms.business.abstracts;
 
-public interface UserService {
+import java.util.List;
 
+import JavaKampProje.hrms.core.utilities.DataResult;
+import JavaKampProje.hrms.entities.concretes.User;
+
+public interface UserService {
+	DataResult<List<User>> getAll();
 }

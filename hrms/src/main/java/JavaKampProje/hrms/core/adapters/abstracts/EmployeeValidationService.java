@@ -1,5 +1,7 @@
 package JavaKampProje.hrms.core.adapters.abstracts;
 
-public interface EmployeeValidationService {
+import JavaKampProje.hrms.entities.concretes.Employer;
 
+public interface EmployeeValidationService {
+	boolean isValidatedByEmployee(Employer employer);
 }
