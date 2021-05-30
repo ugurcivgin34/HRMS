@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -14,27 +17,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
+@Table(name="cities")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="employers")
-@Entity
-@PrimaryKeyJoinColumn(name="id")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","jobPostings"})
-public class Employer extends User {
+public class City {
 	
-	@Column(name="company_name")
-	private String companyName;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="city_id")
+	private int id;
 	
-	@Column(name="web_adres")
-	private String webAdres;
+	@Column(name="city")
+	private String city;
 	
-	@Column(name="phone_number")
-	private String phoneNumber;
-	
-	@Column(name="is_activated_employer")
-	private Boolean isActivatedEmployer;
-	
-	@OneToMany(mappedBy = "employer")
+	@OneToMany(mappedBy = "city")
 	private List<JobPosting> jobPostings;
 }
